@@ -1,0 +1,33 @@
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace Desolation.Items.Weapons
+{
+    public class CavansiteSword : ModItem
+    {
+        public override void SetDefaults()
+        {
+            item.CloneDefaults(ItemID.CopperBroadsword);
+            item.name = "Cavansite Slicer";
+            item.melee = true;
+            item.damage = 30;
+            item.width = 84;
+            item.height = 84;
+            item.useTime = 5;
+            item.toolTip = "It has sharp crystals that appear to alter gravity...";
+            item.knockBack = 10;
+            item.value = 100000;
+            item.rare = 2;
+            item.autoReuse = true;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.DirtBlock, 1);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
+}
