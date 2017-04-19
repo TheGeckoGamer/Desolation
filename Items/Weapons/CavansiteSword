@@ -7,7 +7,7 @@ namespace Desolation.Items.Weapons
     {
         public override void SetDefaults()
         {
-            item.CloneDefaults(ItemID.CopperBroadsword);
+            item.CloneDefaults(ItemID.NightsEdge);
             item.name = "Cavansite Slicer";
             item.melee = true;
             item.damage = 30;
