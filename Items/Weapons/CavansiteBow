@@ -45,7 +45,7 @@ namespace Desolation.Items.Weapons
 		{
 			if (player.altFunctionUse == 2)
 			{
-				item.useStyle = 3;
+				item.useStyle = 5;
 				item.useTime = 20;
 				item.useAnimation = 25;
 				item.damage = 50;
