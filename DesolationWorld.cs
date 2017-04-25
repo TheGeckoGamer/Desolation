@@ -59,6 +59,32 @@ namespace Desolation
                         }
 
                     }
+                    tasks.Insert(genIndex + 1, new PassLegacy("Tar Biome", delegate (GenerationProgress progress)
+                    {
+                        progress.Message = "Fossilizing";
+                        for (int i = 0; i < Main.maxTilesX / 700; i++)       //900 is how many biomes. the bigger is the number = less biomes
+                        {
+                            int X = WorldGen.genRand.Next(1, Main.maxTilesX - 150);
+                            int Y = WorldGen.genRand.Next((int)WorldGen.rockLayer - 100, Main.maxTilesY - 100);
+                            int Xhigh = X + 800;
+                            int Yhigh = Y;
+                            int TileType = 54;    
+
+                            WorldGen.TileRunner(X, Y, 125, WorldGen.genRand.Next(100, 200), TileType, false, 0f, 0f, true, true);  //125 is how big is the biome     100, 200 this changes how random it looks.
+
+                    for (int A = X; A < Xhigh; A++)
+                    {
+                        for (int B = Y; B < Yhigh; B++)
+                        {
+                            if (Main.tile[A, B] != null)
+                            {
+                                if (Main.tile[A, B].type == 54) // A = x, B = y.
+                                {
+                                    WorldGen.KillWall(A, B);
+                                }
+                            }
+                        }
+                    }
                 }
 
             }));
