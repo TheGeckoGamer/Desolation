@@ -14,7 +14,7 @@ namespace Desolation.Items.Weapons
 			item.melee = false;
 			item.width = 40;
 			item.height = 40;
-			item.toolTip = "This weapon does something special with right click.";
+			item.toolTip = "There appears to be a split in the middle, and there are blades on it...";
 			item.useTime = 20;
 			item.useAnimation = 20;
 			item.useStyle = 5;
