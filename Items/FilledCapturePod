@@ -1,0 +1,37 @@
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace Desolation.Items
+{
+	public class FilledCapturePod : ModItem
+	{
+		public override void SetDefaults()
+		{
+			item.CloneDefaults(ItemID.ZephyrFish);
+			item.name = "Filled Capture Pod";
+			item.toolTip = "Summons a Fennix to follow you aimlessly.";
+			item.shoot = mod.ProjectileType("FennixPet");
+			item.buffType = mod.BuffType("FennixPetBuff");
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "Diamond", 10);
+                        recipe.AddIngredient(null, "AnyIronBar", 10);
+                        recipe.AddIngredient(null, "LivingFireBlock", 10);
+			recipe.AddTile(null, "Anvils");
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
+
+		public override void UseStyle(Player player)
+		{
+			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
+			{
+				player.AddBuff(item.buffType, 3600, true);
+			}
+		}
+	}
+}
