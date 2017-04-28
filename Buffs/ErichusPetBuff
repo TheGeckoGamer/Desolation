@@ -1,0 +1,27 @@
+using Terraria;
+using Terraria.ModLoader;
+
+namespace Desolation.Buffs
+{
+	public class ErichusPetBuff : ModBuff
+	{
+		public override void SetDefaults()
+		{
+			Main.buffName[Type] = "Erichus Horror Pet";
+			Main.buffTip[Type] = "\"\From the depths of a star-bound galaxy...\"";
+			Main.buffNoTimeDisplay[Type] = true;
+			Main.vanityPet[Type] = true;
+		}
+
+		public override void Update(Player player, ref int buffIndex)
+		{
+			player.buffTime[buffIndex] = 18000;
+           		player.GetModPlayer<DesolationPlayer>(mod).ErichusPet = true;
+			bool petProjectileNotSpawned = player.ownedProjectileCounts[mod.ProjectileType("ErichusPet")] <= 0;
+			if (petProjectileNotSpawned && player.whoAmI == Main.myPlayer)
+			{
+				Projectile.NewProjectile(player.position.X + (float)(player.width / 2), player.position.Y + (float)(player.height / 2), 0f, 0f, mod.ProjectileType("ErichusPet"), 0, 0f, player.whoAmI, 0f, 0f);
+			}
+		}
+	}
+}
